@@ -9,10 +9,10 @@ blurb: Used within a trial and called on an element.
 ---
 
 <!-- VARIABLE ASSIGNMENT -->
-{% assign standard-action = site.standard | where: "command_type", "action" %}
-{% assign standard-test = site.standard | where: "command_type", "test" %}
-{% assign specific-action = site.documents | where: "command_type", "action" | where_exp: "page", "page.parent != 'Standard element commands'" %}
-{% assign specific-test = site.documents | where: "command_type", "test" | where_exp: "page", "page.parent != 'Standard element commands'" %}
+{% assign standard-action = site.action-commands | where: "element_type", "standard" %}
+{% assign standard-test = site.test-commands | where: "element_type", "standard" %}
+{% assign specific-action = site.action-commands | where_exp: "page", "page.element_type != 'standard'" %}
+{% assign specific-test = site.test-commands | where_exp: "page", "page.element_type != 'standard'" %}
 
 # {{ page.title }}
 
