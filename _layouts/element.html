@@ -3,8 +3,8 @@ layout: default
 ---
 
 <!-- VARIABLE ASSIGNMENT -->
-{% assign action-commands = site[page.element_type] | where: "command_type", "action" %}
-{% assign test-commands = site[page.element_type] | where: "command_type", "test" %}
+{% assign action-commands = site.action-commands | where_exp: "command", "command.element_type == page.element_type" %}
+{% assign test-commands = site.test-commands | where_exp: "command", "command.element_type == page.element_type" %}
 
 <!-- LAYOUT -->
 <h1>{{ page.title }}</h1>
